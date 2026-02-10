@@ -290,7 +290,7 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tech-ml-version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="printedClojure">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="st">"8.003"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="st">"7.067"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tablecloth-version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -945,7 +945,7 @@ window.Quarto = {
 </div>
 <hr>
 <p>Import Excel,Arrow,Parquet files</p>
-<p>The simplest is to add <a href="https://github.com/scicloj/dataset-io">dataset-io</a> to deps.edn. Then tablecloth will automatically enable support for xls(x) , Arrow and Parquet<br>
+<p>The simplest way for enabling Excel,Arrow,Parquet is to add <a href="https://github.com/scicloj/dataset-io">dataset-io</a> to deps.edn. Then tablecloth will automatically enable support for xls(x) , Arrow and Parquet<br>
 (this will add quite some dependencies)</p>
 <p>Otherwise you can enable it manualy following instructions here:</p>
 <ul>
@@ -1194,185 +1194,179 @@ window.Quarto = {
 </div>
 <div class="sourceClojure">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a> (tc/dataset <span class="st">"data/userdata1.parquet"</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a> (tc/select-columns [<span class="st">"registration_dttm"</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"id"</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"first_name"</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"last_name"</span> <span class="st">"email"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a> (tc/dataset <span class="st">"data/titanic.parquet"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a> (tc/select-columns [<span class="st">"PassengerId"</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Pclass"</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Age"</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Embarked"</span> </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Survived"</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="clay-dataset">
-<p>data/userdata1.parquet [1000 5]:</p>
+<p>data/titanic.parquet [891 5]:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 7%">
-<col style="width: 15%">
-<col style="width: 13%">
-<col style="width: 35%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>registration_dttm</th>
-<th style="text-align: right;">id</th>
-<th>first_name</th>
-<th>last_name</th>
-<th>email</th>
+<th style="text-align: right;">PassengerId</th>
+<th style="text-align: right;">Pclass</th>
+<th style="text-align: right;">Age</th>
+<th>Embarked</th>
+<th style="text-align: right;">Survived</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>2016-02-03T07:55:29Z</td>
 <td style="text-align: right;">1</td>
-<td>Amanda</td>
-<td>Jordan</td>
-<td>ajordan0@com.com</td>
-</tr>
-<tr class="even">
-<td>2016-02-03T17:04:03Z</td>
-<td style="text-align: right;">2</td>
-<td>Albert</td>
-<td>Freeman</td>
-<td>afreeman1@is.gd</td>
-</tr>
-<tr class="odd">
-<td>2016-02-03T01:09:31Z</td>
 <td style="text-align: right;">3</td>
-<td>Evelyn</td>
-<td>Morgan</td>
-<td>emorgan2@altervista.org</td>
+<td style="text-align: right;">22.0</td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T00:36:21Z</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">38.0</td>
+<td>C</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">26.0</td>
+<td>S</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">4</td>
-<td>Denise</td>
-<td>Riley</td>
-<td>driley3@gmpg.org</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">35.0</td>
+<td>S</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td>2016-02-03T05:05:31Z</td>
 <td style="text-align: right;">5</td>
-<td>Carlos</td>
-<td>Burns</td>
-<td>cburns4@miitbeian.gov.cn</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">35.0</td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T07:22:34Z</td>
 <td style="text-align: right;">6</td>
-<td>Kathryn</td>
-<td>White</td>
-<td>kwhite5@google.com</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"></td>
+<td>Q</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td>2016-02-03T08:33:08Z</td>
 <td style="text-align: right;">7</td>
-<td>Samuel</td>
-<td>Holmes</td>
-<td>sholmes6@foxnews.com</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">54.0</td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T06:47:06Z</td>
 <td style="text-align: right;">8</td>
-<td>Harry</td>
-<td>Howell</td>
-<td>hhowell7@eepurl.com</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.0</td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td>2016-02-03T03:52:53Z</td>
 <td style="text-align: right;">9</td>
-<td>Jose</td>
-<td>Foster</td>
-<td>jfoster8@yelp.com</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">27.0</td>
+<td>S</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T18:29:47Z</td>
 <td style="text-align: right;">10</td>
-<td>Emily</td>
-<td>Stewart</td>
-<td>estewart9@opensource.org</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">14.0</td>
+<td>C</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td>…</td>
+<td style="text-align: right;">…</td>
+<td style="text-align: right;">…</td>
 <td style="text-align: right;">…</td>
 <td>…</td>
-<td>…</td>
-<td>…</td>
+<td style="text-align: right;">…</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T10:07:00Z</td>
-<td style="text-align: right;">990</td>
-<td>Helen</td>
-<td>Snyder</td>
-<td>hsnyderrh@dagondesign.com</td>
+<td style="text-align: right;">881</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">25.0</td>
+<td>S</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td>2016-02-03T20:31:10Z</td>
-<td style="text-align: right;">991</td>
-<td>Russell</td>
-<td>Hunt</td>
-<td>rhuntri@yahoo.co.jp</td>
+<td style="text-align: right;">882</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">33.0</td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T08:35:53Z</td>
-<td style="text-align: right;">992</td>
-<td>Martha</td>
-<td>Howard</td>
-<td>mhowardrj@cdc.gov</td>
+<td style="text-align: right;">883</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">22.0</td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td>2016-02-03T11:48:54Z</td>
-<td style="text-align: right;">993</td>
-<td>Patricia</td>
-<td>Henderson</td>
-<td>phendersonrk@delicious.com</td>
+<td style="text-align: right;">884</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">28.0</td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T01:14:13Z</td>
-<td style="text-align: right;">994</td>
-<td>Carol</td>
-<td>Williams</td>
-<td>cwilliamsrl@army.mil</td>
+<td style="text-align: right;">885</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">25.0</td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td>2016-02-03T00:18:26Z</td>
-<td style="text-align: right;">995</td>
-<td>Jose</td>
-<td>Mccoy</td>
-<td>jmccoyrm@elpais.com</td>
+<td style="text-align: right;">886</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">39.0</td>
+<td>Q</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T10:30:59Z</td>
-<td style="text-align: right;">996</td>
-<td>Dennis</td>
-<td>Harris</td>
-<td>dharrisrn@eepurl.com</td>
+<td style="text-align: right;">887</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">27.0</td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td>2016-02-03T17:16:53Z</td>
-<td style="text-align: right;">997</td>
-<td>Gloria</td>
-<td>Hamilton</td>
-<td>ghamiltonro@rambler.ru</td>
+<td style="text-align: right;">888</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">19.0</td>
+<td>S</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T05:02:20Z</td>
-<td style="text-align: right;">998</td>
-<td>Nancy</td>
-<td>Morris</td>
-<td>nmorrisrp@ask.com</td>
+<td style="text-align: right;">889</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"></td>
+<td>S</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td>2016-02-03T02:41:32Z</td>
-<td style="text-align: right;">999</td>
-<td>Annie</td>
-<td>Daniels</td>
-<td>adanielsrq@squidoo.com</td>
+<td style="text-align: right;">890</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">26.0</td>
+<td>C</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td>2016-02-03T09:52:18Z</td>
-<td style="text-align: right;">1000</td>
-<td>Julie</td>
-<td>Meyer</td>
-<td>jmeyerrr@flavors.me</td>
+<td style="text-align: right;">891</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">32.0</td>
+<td>Q</td>
+<td style="text-align: right;">0</td>
 </tr>
 </tbody>
 </table>
@@ -2064,13 +2058,13 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">take</span> <span class="dv">2</span> (tc/rows ds))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="printedClojure">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>([#object[java.<span class="kw">time</span>.LocalDate <span class="bn">0x6a30b98a</span> <span class="st">"2012-01-01"</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>([#object[java.<span class="kw">time</span>.LocalDate <span class="bn">0x6b6b3cfd</span> <span class="st">"2012-01-01"</span>]</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.0</span></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fl">12.8</span></span>
 <span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fl">5.0</span></span>
 <span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4.7</span></span>
 <span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"drizzle"</span>]</span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a> [#object[java.<span class="kw">time</span>.LocalDate <span class="bn">0x329ad9f0</span> <span class="st">"2012-01-02"</span>]</span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a> [#object[java.<span class="kw">time</span>.LocalDate <span class="bn">0x7d229bb0</span> <span class="st">"2012-01-02"</span>]</span>
 <span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>  <span class="fl">10.9</span></span>
 <span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>  <span class="fl">10.6</span></span>
 <span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.8</span></span>
@@ -2114,13 +2108,13 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<pre><code>({"date" #object[java.time.LocalDate 0x10a0d82f "2012-01-01"],
+<pre><code>({"date" #object[java.time.LocalDate 0x58f838a "2012-01-01"],
   "precipitation" 0.0,
   "temp_max" 12.8,
   "temp_min" 5.0,
   "wind" 4.7,
   "weather" "drizzle"}
- {"date" #object[java.time.LocalDate 0x3f7b378d "2012-01-02"],
+ {"date" #object[java.time.LocalDate 0x49d6f8df "2012-01-02"],
   "precipitation" 10.9,
   "temp_max" 10.6,
   "temp_min" 2.8,
@@ -5132,7 +5126,7 @@ window.Quarto = {
 <th style="text-align: right;">v1</th>
 <th style="text-align: right;">v2</th>
 <th style="text-align: right;">[1 2 3]</th>
-<th>java.lang.Object@462e89a1</th>
+<th>java.lang.Object@15e459c9</th>
 </tr>
 </thead>
 <tbody>
@@ -5372,7 +5366,7 @@ window.Quarto = {
 <th style="text-align: right;" data-quarto-table-cell-role="th">v1</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">v2</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">[1 2 3]</th>
-<th data-quarto-table-cell-role="th">java.lang.Object@2c8b3deb</th>
+<th data-quarto-table-cell-role="th">java.lang.Object@60f66894</th>
 </tr>
 </thead>
 <tbody>
@@ -5432,7 +5426,7 @@ window.Quarto = {
 <th style="text-align: right;" data-quarto-table-cell-role="th">v1</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">v2</th>
 <th style="text-align: right;" data-quarto-table-cell-role="th">[1 2 3]</th>
-<th data-quarto-table-cell-role="th">java.lang.Object@2c8b3deb</th>
+<th data-quarto-table-cell-role="th">java.lang.Object@60f66894</th>
 </tr>
 </thead>
 <tbody>
@@ -5587,55 +5581,55 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">0.21587433</td>
+<td style="text-align: right;">0.84665189</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.84746599</td>
+<td style="text-align: right;">0.42569947</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.72031192</td>
+<td style="text-align: right;">0.81155567</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">1.5</td>
 <td>C</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.98456205</td>
+<td style="text-align: right;">0.57909681</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.56414992</td>
+<td style="text-align: right;">0.82241567</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.40032788</td>
+<td style="text-align: right;">0.71147332</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">1.5</td>
 <td>C</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.67998531</td>
+<td style="text-align: right;">0.25073372</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.22830428</td>
+<td style="text-align: right;">0.40882690</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.02881042</td>
+<td style="text-align: right;">0.96677779</td>
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">1.5</td>
 <td>C</td>
@@ -6526,49 +6520,49 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">8</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
 </tr>
@@ -7990,10 +7984,10 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
 </tr>
 </tbody>
 </table>
@@ -8050,13 +8044,37 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
 </tr>
@@ -8067,32 +8085,8 @@ window.Quarto = {
 <td>A</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">1.5</td>
 <td>C</td>
 </tr>
@@ -8124,28 +8118,28 @@ window.Quarto = {
 <td>C</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
 </tr>
 </tbody>
 </table>
@@ -8170,9 +8164,9 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
@@ -8181,22 +8175,22 @@ window.Quarto = {
 <td>C</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">1.5</td>
 <td>C</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
-</tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
 </tr>
 </tbody>
 </table>
@@ -8277,27 +8271,39 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
@@ -8308,18 +8314,6 @@ window.Quarto = {
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
 <td style="text-align: right;">1.5</td>
 <td>C</td>
 </tr>
@@ -8634,6 +8628,18 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
@@ -8645,38 +8651,14 @@ window.Quarto = {
 <td>A</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
 </tr>
@@ -8693,16 +8675,16 @@ window.Quarto = {
 <td>B</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
@@ -8711,14 +8693,26 @@ window.Quarto = {
 <td>C</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
 <td style="text-align: right;">1.5</td>
 <td>C</td>
 </tr>
@@ -10273,15 +10267,15 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
 </tr>
 </tbody>
 </table>
@@ -14031,15 +14025,15 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>:a</td>
-<td>[D@7946cb53</td>
+<td>[D@f392d8d</td>
 </tr>
 <tr class="even">
 <td>:b</td>
-<td>[D@1f01fa88</td>
+<td>[D@5e888c34</td>
 </tr>
 <tr class="odd">
 <td>:c</td>
-<td>[D@651e1635</td>
+<td>[D@9ef90a8</td>
 </tr>
 </tbody>
 </table>
@@ -17069,8 +17063,8 @@ window.Quarto = {
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">0.19653491</td>
-<td style="text-align: right;">0.95408503</td>
+<td style="text-align: right;">0.89654278</td>
+<td style="text-align: right;">0.01846566</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">-2</td>
 </tr>
@@ -17078,8 +17072,8 @@ window.Quarto = {
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.92899209</td>
-<td style="text-align: right;">0.10071254</td>
+<td style="text-align: right;">0.97485009</td>
+<td style="text-align: right;">0.53496771</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">-2</td>
 </tr>
@@ -17087,8 +17081,8 @@ window.Quarto = {
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.96174854</td>
-<td style="text-align: right;">0.69292757</td>
+<td style="text-align: right;">0.12950566</td>
+<td style="text-align: right;">0.95322316</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">-2</td>
 </tr>
@@ -17096,8 +17090,8 @@ window.Quarto = {
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.62969626</td>
-<td style="text-align: right;">0.77694156</td>
+<td style="text-align: right;">0.95141879</td>
+<td style="text-align: right;">0.16252474</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">-2</td>
 </tr>
@@ -17128,7 +17122,7 @@ window.Quarto = {
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.19653491</td>
+<td style="text-align: right;">0.89654278</td>
 <td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
@@ -17136,7 +17130,7 @@ window.Quarto = {
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.92899209</td>
+<td style="text-align: right;">0.97485009</td>
 <td style="text-align: right;">3</td>
 </tr>
 <tr class="odd">
@@ -17144,7 +17138,7 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.96174854</td>
+<td style="text-align: right;">0.12950566</td>
 <td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
@@ -17152,7 +17146,7 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0.62969626</td>
+<td style="text-align: right;">0.95141879</td>
 <td style="text-align: right;">3</td>
 </tr>
 <tr class="odd">
@@ -17160,7 +17154,7 @@ window.Quarto = {
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">0.95408503</td>
+<td style="text-align: right;">0.01846566</td>
 <td style="text-align: right;">-2</td>
 </tr>
 <tr class="even">
@@ -17168,7 +17162,7 @@ window.Quarto = {
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">0.10071254</td>
+<td style="text-align: right;">0.53496771</td>
 <td style="text-align: right;">-2</td>
 </tr>
 <tr class="odd">
@@ -17176,7 +17170,7 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">0.69292757</td>
+<td style="text-align: right;">0.95322316</td>
 <td style="text-align: right;">-2</td>
 </tr>
 <tr class="even">
@@ -17184,7 +17178,7 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">0.77694156</td>
+<td style="text-align: right;">0.16252474</td>
 <td style="text-align: right;">-2</td>
 </tr>
 </tbody>
@@ -25965,21 +25959,9 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
@@ -25995,9 +25977,9 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
@@ -26013,15 +25995,27 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">…</td>
@@ -26030,70 +26024,70 @@ window.Quarto = {
 <td>…</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">5</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
-</tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">0.5</td>
 <td>A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
 </tr>
 </tbody>
 </table>
@@ -26305,9 +26299,9 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
@@ -26323,9 +26317,9 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">1.5</td>
-<td>C</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1.0</td>
+<td>B</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
@@ -26340,16 +26334,16 @@ window.Quarto = {
 <td>C</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
 </tr>
 </tbody>
 </table>
@@ -26915,12 +26909,12 @@ window.Quarto = {
 <tr class="odd">
 <td style="text-align: right;">2</td>
 <td>:a</td>
-<td>:g3</td>
+<td>:g2</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">3</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">4</td>
@@ -26930,7 +26924,7 @@ window.Quarto = {
 <tr class="even">
 <td style="text-align: right;">5</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">6</td>
@@ -26940,7 +26934,7 @@ window.Quarto = {
 <tr class="even">
 <td style="text-align: right;">7</td>
 <td>:a</td>
-<td>:g2</td>
+<td>:g1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">8</td>
@@ -26960,7 +26954,7 @@ window.Quarto = {
 <tr class="even">
 <td style="text-align: right;">14</td>
 <td>:a</td>
-<td>:g2</td>
+<td>:g1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">15</td>
@@ -26975,22 +26969,22 @@ window.Quarto = {
 <tr class="odd">
 <td style="text-align: right;">17</td>
 <td>:a</td>
-<td>:g3</td>
+<td>:g1</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">18</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">19</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g3</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">20</td>
 <td>:b</td>
-<td>:g2</td>
+<td>:g1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">21</td>
@@ -27000,17 +26994,17 @@ window.Quarto = {
 <tr class="even">
 <td style="text-align: right;">22</td>
 <td>:b</td>
-<td>:g1</td>
+<td>:g3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">23</td>
 <td>:b</td>
-<td>:g3</td>
+<td>:g2</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">24</td>
 <td>:b</td>
-<td>:g2</td>
+<td>:g3</td>
 </tr>
 </tbody>
 </table>
@@ -27038,91 +27032,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">9</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">20</td>
-<td>:b</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">24</td>
-<td>:b</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">10</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">16</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">19</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">15</td>
+<td style="text-align: right;">8</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
@@ -27136,45 +27046,143 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">15</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td>:b</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td>:b</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">21</td>
 <td>:b</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
 <tr class="even">
-<td style="text-align: right;">13</td>
+<td style="text-align: right;">17</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">17</td>
-<td>:a</td>
-<td>:g3</td>
+<td style="text-align: right;">20</td>
+<td>:b</td>
+<td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">3</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">11</td>
+<td style="text-align: right;">2</td>
 <td>:a</td>
-<td>:g3</td>
+<td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23</td>
+<td>:b</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
@@ -27185,32 +27193,32 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">13</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: right;">23</td>
 <td>:b</td>
-<td>:g3</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">22</td>
-<td>:b</td>
-<td>:g1</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">18</td>
 <td>:a</td>
-<td>:g1</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
@@ -27220,30 +27228,16 @@ window.Quarto = {
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">13</td>
 <td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">23</td>
-<td>:b</td>
 <td>:g3</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">22</td>
-<td>:b</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">1</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">18</td>
+<td style="text-align: right;">1</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
@@ -27271,107 +27265,37 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">16</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">15</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">9</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
 <tr class="odd">
-<td style="text-align: right;">10</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">11</td>
+<td style="text-align: right;">12</td>
 <td>:a</td>
 <td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">19</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-<td>:a</td>
-<td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">17</td>
 <td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td>:a</td>
 <td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">18</td>
-<td>:a</td>
-<td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -27383,100 +27307,170 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">15</td>
+<td style="text-align: right;">19</td>
 <td>:a</td>
-<td>:g2</td>
-<td>:test</td>
+<td>:g3</td>
+<td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">12</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:test</td>
 <td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">3</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">15</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">12</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">4</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">11</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:train</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">10</td>
 <td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>:a</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">11</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">19</td>
+<td style="text-align: right;">6</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">14</td>
+<td style="text-align: right;">3</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">17</td>
+<td style="text-align: right;">2</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
 <td>:a</td>
 <td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td>:a</td>
+<td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
@@ -27504,6 +27498,62 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">20</td>
+<td>:b</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20</td>
+<td>:b</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">4</td>
 <td>:a</td>
 <td>:g2</td>
@@ -27511,64 +27561,8 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">24</td>
+<td style="text-align: right;">23</td>
 <td>:b</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">12</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">24</td>
-<td>:b</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">10</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td>:a</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
@@ -27581,79 +27575,79 @@ window.Quarto = {
 <td style="text-align: right;">…</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">19</td>
+<td style="text-align: right;">18</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
 <td>:a</td>
-<td>:g3</td>
+<td>:g2</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">3</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g2</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">5</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">6</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: right;">7</td>
 <td>:a</td>
-<td>:g2</td>
+<td>:g1</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td>:a</td>
+<td>:g1</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">14</td>
 <td>:a</td>
-<td>:g2</td>
+<td>:g1</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">15</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">16</td>
 <td>:a</td>
 <td>:g3</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">17</td>
-<td>:a</td>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td>:b</td>
 <td>:g3</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">20</td>
-<td>:b</td>
-<td>:g2</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">21</td>
+<td style="text-align: right;">24</td>
 <td>:b</td>
-<td>:g2</td>
+<td>:g3</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -27694,114 +27688,114 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">16</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">19</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">11</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">18</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">15</td>
 <td>:a</td>
 <td>:g2</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">12</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:test</td>
+<td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">24</td>
 <td>:b</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td>:a</td>
 <td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20</td>
+<td>:b</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19</td>
+<td>:a</td>
+<td>:g3</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td style="text-align: right;">…</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">1</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">14</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">23</td>
+<td style="text-align: right;">17</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td style="text-align: right;">…</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
 <td>:b</td>
 <td>:g3</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">20</td>
-<td>:b</td>
-<td>:g2</td>
+<td style="text-align: right;">12</td>
+<td>:a</td>
+<td>:g3</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -27813,35 +27807,35 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">17</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">10</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">13</td>
 <td>:a</td>
-<td>:g2</td>
+<td>:g3</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">11</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:test</td>
@@ -27869,135 +27863,135 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">13</td>
 <td>:a</td>
-<td>:g2</td>
+<td>:g3</td>
 <td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">15</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">11</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">19</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">14</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:test</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">16</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:split-2</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">20</td>
-<td>:b</td>
-<td>:g2</td>
-<td>:split-2</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:split-2</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td style="text-align: right;">…</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">24</td>
-<td>:b</td>
-<td>:g2</td>
-<td>:split-3</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:split-3</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">18</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:split-3</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">17</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:split-4</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">12</td>
 <td>:a</td>
-<td>:g2</td>
-<td>:split-4</td>
+<td>:g3</td>
+<td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
 <td>:a</td>
 <td>:g2</td>
-<td>:split-4</td>
+<td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">9</td>
+<td style="text-align: right;">5</td>
 <td>:a</td>
-<td>:g1</td>
-<td>:split-4</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">23</td>
 <td>:b</td>
+<td>:g2</td>
+<td>:test</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td>:b</td>
 <td>:g3</td>
+<td>:split-2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24</td>
+<td>:b</td>
+<td>:g3</td>
+<td>:split-2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:split-2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td style="text-align: right;">…</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:split-3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:split-3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:split-3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:split-4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:split-4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:split-4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td>:b</td>
+<td>:g1</td>
+<td>:split-4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td>:a</td>
+<td>:g1</td>
 <td>:split-4</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -28009,14 +28003,14 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">6</td>
-<td>:a</td>
-<td>:g1</td>
+<td style="text-align: right;">21</td>
+<td>:b</td>
+<td>:g2</td>
 <td>:split-4</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:split-4</td>
@@ -28045,91 +28039,119 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">16</td>
+<td style="text-align: right;">17</td>
 <td>:a</td>
-<td>:g3</td>
+<td>:g1</td>
 <td>small</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">11</td>
+<td style="text-align: right;">13</td>
 <td>:a</td>
 <td>:g3</td>
 <td>small</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">9</td>
+<td>:a</td>
+<td>:g1</td>
+<td>small</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">6</td>
 <td>:a</td>
 <td>:g1</td>
 <td>small</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
+<tr class="odd">
+<td style="text-align: right;">4</td>
 <td>:a</td>
 <td>:g2</td>
 <td>small</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">19</td>
-<td>:a</td>
-<td>:g1</td>
-<td>small</td>
-<td style="text-align: right;">0</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">17</td>
+<td style="text-align: right;">19</td>
 <td>:a</td>
 <td>:g3</td>
 <td>smaller</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">18</td>
+<td>:a</td>
+<td>:g2</td>
+<td>smaller</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td>:a</td>
+<td>:g1</td>
+<td>smaller</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td>:a</td>
+<td>:g2</td>
+<td>big</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">1</td>
 <td>:a</td>
 <td>:g2</td>
-<td>smaller</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">5</td>
-<td>:a</td>
-<td>:g1</td>
-<td>smaller</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13</td>
-<td>:a</td>
-<td>:g1</td>
 <td>big</td>
 <td style="text-align: right;">0</td>
 </tr>
+<tr class="odd">
+<td style="text-align: right;">…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td style="text-align: right;">…</td>
+</tr>
 <tr class="even">
-<td style="text-align: right;">15</td>
+<td style="text-align: right;">24</td>
+<td>:b</td>
+<td>:g3</td>
+<td>big</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
 <td>:a</td>
 <td>:g2</td>
 <td>big</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td style="text-align: right;">…</td>
-</tr>
 <tr class="even">
-<td style="text-align: right;">22</td>
+<td style="text-align: right;">20</td>
 <td>:b</td>
 <td>:g1</td>
 <td>big</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">18</td>
+<td style="text-align: right;">2</td>
+<td>:a</td>
+<td>:g2</td>
+<td>big</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td>:a</td>
+<td>:g2</td>
+<td>big</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
 <td>:a</td>
 <td>:g1</td>
 <td>big</td>
@@ -28143,58 +28165,30 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">9</td>
-<td>:a</td>
-<td>:g1</td>
-<td>big</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td>:a</td>
-<td>:g3</td>
-<td>big</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">23</td>
-<td>:b</td>
-<td>:g3</td>
-<td>big</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">20</td>
-<td>:b</td>
-<td>:g2</td>
-<td>big</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">24</td>
-<td>:b</td>
-<td>:g2</td>
-<td>the rest</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td>:a</td>
-<td>:g2</td>
-<td>the rest</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td>:a</td>
-<td>:g2</td>
-<td>the rest</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">7</td>
 <td>:a</td>
+<td>:g1</td>
+<td>the rest</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23</td>
+<td>:b</td>
 <td>:g2</td>
+<td>the rest</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td>:a</td>
+<td>:g2</td>
+<td>the rest</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td>:a</td>
+<td>:g3</td>
 <td>the rest</td>
 <td style="text-align: right;">0</td>
 </tr>
@@ -28363,48 +28357,6 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">5</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">7</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">18</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">19</td>
-<td>:a</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">24</td>
-<td>:b</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">9</td>
 <td>:a</td>
 <td>:g1</td>
@@ -28412,21 +28364,21 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">17</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
 <tr class="even">
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
@@ -28435,82 +28387,54 @@ window.Quarto = {
 <tr class="odd">
 <td style="text-align: right;">20</td>
 <td>:b</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">11</td>
-<td>:a</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13</td>
-<td>:a</td>
 <td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">21</td>
-<td>:b</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">12</td>
+<td style="text-align: right;">18</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: right;">22</td>
 <td>:b</td>
-<td>:g1</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">16</td>
-<td>:a</td>
 <td>:g3</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">10</td>
-<td>:a</td>
-<td>:g2</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">23</td>
-<td>:b</td>
-<td>:g3</td>
-<td>:train</td>
-<td style="text-align: right;">0</td>
-</tr>
 <tr class="odd">
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">12</td>
+<td>:a</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19</td>
 <td>:a</td>
 <td>:g3</td>
 <td>:train</td>
@@ -28524,50 +28448,120 @@ window.Quarto = {
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">24</td>
+<td>:b</td>
+<td>:g3</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17</td>
 <td>:a</td>
 <td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">23</td>
+<td>:b</td>
+<td>:g2</td>
+<td>:train</td>
 <td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21</td>
+<td>:b</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
 <td>:a</td>
 <td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td>:a</td>
+<td>:g2</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td>:a</td>
+<td>:g1</td>
+<td>:train</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td>:a</td>
+<td>:g3</td>
 <td>:test</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">16</td>
 <td>:a</td>
-<td>:g2</td>
+<td>:g3</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">18</td>
+<td style="text-align: right;">13</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g3</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">14</td>
+<td style="text-align: right;">2</td>
 <td>:a</td>
 <td>:g2</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">19</td>
-<td>:a</td>
+<td style="text-align: right;">20</td>
+<td>:b</td>
 <td>:g1</td>
 <td>:train</td>
 <td style="text-align: right;">1</td>
@@ -28607,17 +28601,17 @@ window.Quarto = {
 <tr class="odd">
 <td>:g2</td>
 <td style="text-align: right;">0</td>
-<td>Group: :g2, (splitted) [13 5]:</td>
+<td>Group: :g2, (splitted) [11 5]:</td>
 </tr>
 <tr class="even">
-<td>:g3</td>
+<td>:g1</td>
 <td style="text-align: right;">1</td>
-<td>Group: :g3, (splitted) [7 5]:</td>
+<td>Group: :g1, (splitted) [11 5]:</td>
 </tr>
 <tr class="odd">
-<td>:g1</td>
+<td>:g3</td>
 <td style="text-align: right;">2</td>
-<td>Group: :g1, (splitted) [10 5]:</td>
+<td>Group: :g3, (splitted) [7 5]:</td>
 </tr>
 </tbody>
 </table>
@@ -28656,19 +28650,19 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">14</td>
+<td>:a</td>
+<td>:g1</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">4</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td>:a</td>
-<td>:g2</td>
-</tr>
 <tr class="odd">
-<td style="text-align: right;">15</td>
+<td style="text-align: right;">11</td>
 <td>:a</td>
-<td>:g2</td>
+<td>:g1</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">16</td>
@@ -28676,84 +28670,84 @@ window.Quarto = {
 <td>:g3</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">14</td>
-<td>:a</td>
-<td>:g2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">9</td>
-<td>:a</td>
-<td>:g1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">12</td>
-<td>:a</td>
-<td>:g2</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">10</td>
 <td>:a</td>
-<td>:g2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">19</td>
-<td>:a</td>
 <td>:g1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">17</td>
+<td style="text-align: right;">3</td>
+<td>:a</td>
+<td>:g2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
 <td>:a</td>
 <td>:g3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td>:a</td>
-<td>:g2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td>:a</td>
-<td>:g2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0</td>
-<td>:a</td>
-<td>:g2</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">5</td>
 <td>:a</td>
+<td>:g2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>:a</td>
+<td>:g2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17</td>
+<td>:a</td>
 <td>:g1</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">9</td>
+<td>:a</td>
+<td>:g1</td>
+</tr>
+<tr class="even">
 <td style="text-align: right;">6</td>
 <td>:a</td>
 <td>:g1</td>
 </tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td>:a</td>
+<td>:g2</td>
+</tr>
 <tr class="even">
-<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td>:a</td>
+<td>:g2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td>:a</td>
+<td>:g1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
 <td>:a</td>
 <td>:g3</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">24</td>
-<td>:b</td>
-<td>:g2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">21</td>
-<td>:b</td>
-<td>:g2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">22</td>
+<td style="text-align: right;">20</td>
 <td>:b</td>
 <td>:g1</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">20</td>
+<td style="text-align: right;">24</td>
+<td>:b</td>
+<td>:g3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21</td>
 <td>:b</td>
 <td>:g2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td>:b</td>
+<td>:g3</td>
 </tr>
 </tbody>
 </table>
@@ -28785,29 +28779,29 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">3</td>
-<td>:a</td>
-<td>:g1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">13</td>
-<td>:a</td>
-<td>:g1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td>:a</td>
-<td>:g3</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">18</td>
 <td>:a</td>
-<td>:g1</td>
+<td>:g2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>:a</td>
+<td>:g2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td>:a</td>
+<td>:g2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19</td>
+<td>:a</td>
+<td>:g3</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">23</td>
 <td>:b</td>
-<td>:g3</td>
+<td>:g2</td>
 </tr>
 </tbody>
 </table>
@@ -28838,7 +28832,7 @@ window.Quarto = {
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td><div style="margin-left:10px;">
 <div class="clay-dataset">
-<p>Group: 0 [11 3]:</p>
+<p>Group: 0 [10 3]:</p>
 <table class="table caption-top">
 <thead>
 <tr class="header">
@@ -28849,7 +28843,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">12</td>
+<td style="text-align: right;">8</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
@@ -28859,12 +28853,12 @@ window.Quarto = {
 <td>:g2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">15</td>
+<td style="text-align: right;">18</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
@@ -28874,31 +28868,26 @@ window.Quarto = {
 <td>:g2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">14</td>
+<td style="text-align: right;">15</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">24</td>
+<td style="text-align: right;">23</td>
 <td>:b</td>
 <td>:g2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">24</td>
-<td>:b</td>
-<td>:g2</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">21</td>
 <td>:b</td>
 <td>:g2</td>
@@ -28922,7 +28911,7 @@ window.Quarto = {
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td><div style="margin-left:10px;">
 <div class="clay-dataset">
-<p>Group: 0 [2 3]:</p>
+<p>Group: 0 [1 3]:</p>
 <table class="table caption-top">
 <thead>
 <tr class="header">
@@ -28933,13 +28922,8 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
 <td>:a</td>
-<td>:g2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">20</td>
-<td>:b</td>
 <td>:g2</td>
 </tr>
 </tbody>
@@ -28962,7 +28946,7 @@ window.Quarto = {
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td><div style="margin-left:10px;">
 <div class="clay-dataset">
-<p>Group: 1 [11 3]:</p>
+<p>Group: 1 [10 3]:</p>
 <table class="table caption-top">
 <thead>
 <tr class="header">
@@ -28973,17 +28957,17 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">15</td>
+<td style="text-align: right;">18</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">10</td>
+<td style="text-align: right;">5</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
@@ -28993,12 +28977,12 @@ window.Quarto = {
 <td>:g2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">15</td>
+<td style="text-align: right;">18</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
@@ -29008,7 +28992,7 @@ window.Quarto = {
 <td>:g2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">12</td>
+<td style="text-align: right;">8</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
@@ -29018,11 +29002,6 @@ window.Quarto = {
 <td>:g2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">21</td>
-<td>:b</td>
-<td>:g2</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">21</td>
 <td>:b</td>
 <td>:g2</td>
@@ -29046,7 +29025,7 @@ window.Quarto = {
 </div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></td>
 <td><div style="margin-left:10px;">
 <div class="clay-dataset">
-<p>Group: 1 [4 3]:</p>
+<p>Group: 1 [3 3]:</p>
 <table class="table caption-top">
 <thead>
 <tr class="header">
@@ -29057,22 +29036,17 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">14</td>
+<td style="text-align: right;">15</td>
 <td>:a</td>
 <td>:g2</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">20</td>
-<td>:b</td>
-<td>:g2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">24</td>
+<td style="text-align: right;">23</td>
 <td>:b</td>
 <td>:g2</td>
 </tr>
@@ -33762,9 +33736,9 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
@@ -33773,10 +33747,10 @@ window.Quarto = {
 <td>B</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1.0</td>
-<td>B</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
 </tr>
 </tbody>
 </table>
@@ -33799,32 +33773,32 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0.5</td>
-<td>A</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">1.0</td>
 <td>B</td>
 </tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
 <tr class="odd">
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.5</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">9</td>
+<td style="text-align: right;">1.5</td>
+<td>C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">1.5</td>
 <td>C</td>
 </tr>

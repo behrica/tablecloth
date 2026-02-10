@@ -266,11 +266,12 @@ Otherwise you can enable it manualy following instructions here:
                      "doubles"]))
 
 (->
- (tc/dataset "data/userdata1.parquet")
- (tc/select-columns ["registration_dttm"
-                     "id"
-                     "first_name"
-                     "last_name" "email"]))
+ (tc/dataset "data/titanic.parquet")
+ (tc/select-columns ["PassengerId"
+                     "Pclass"
+                     "Age"
+                     "Embarked" 
+                     "Survived"]))
 
 
 (md "
